@@ -47,6 +47,7 @@ public class UserService {
                 .replace("\"", ""); //to be able to save in JSON format
     }
 
+
     private static MessageDigest getMessageDigest() {
         MessageDigest md;
         try {

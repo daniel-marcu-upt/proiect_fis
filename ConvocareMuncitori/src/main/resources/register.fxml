@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" minHeight="1000" minWidth="900"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" minHeight="1000" minWidth="3900"
           vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
           fx:controller="org.loose.fis.sre.controllers.RegistrationController">
     <padding>
@@ -31,8 +31,12 @@
     <Label text="Adresa(clienti) sau specializari(muncitori):" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
     <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
-    <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+    <Text textAlignment="LEFT" fx:id="registrationMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <Button onAction="#handleRegisterAction" text="Register"/>
+    </HBox>
+    <Label text="Aveti deja un cont?" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="8">
+        <Button onAction="#gotoLogin" text="Login"/>
     </HBox>
 </GridPane>
