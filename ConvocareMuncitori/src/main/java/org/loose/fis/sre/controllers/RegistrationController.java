@@ -1,15 +1,24 @@
 package org.loose.fis.sre.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.loose.fis.sre.Main;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.services.UserService;
 
 import javax.validation.constraints.Null;
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class RegistrationController {
 
@@ -67,13 +76,17 @@ public class RegistrationController {
         }
         try {
             UserService.addUser(
-                    emailField.getText(), passwordField.getText(), (String) role.getValue(),
+                    emailField.getText(), passwordField.getText(), (String) role.getValue().toString(),
                     nameField.getText(), phoneField.getText(), descriptionField.getText()
             );
             registrationMessage.setFill(Color.GREEN);
-            registrationMessage.setText("Cont creeat!");
+            registrationMessage.setText("Cont creat cu succes!\nVa puteti autentifica acum.");
         } catch (UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());
         }
+    }
+    @FXML
+    private void gotoLogin() throws IOException {
+        Main.switchScene("login.fxml", "Login");
     }
 }

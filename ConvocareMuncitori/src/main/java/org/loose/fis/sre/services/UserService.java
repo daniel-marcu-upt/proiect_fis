@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.BadCredentials;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.User;
 
@@ -45,6 +46,21 @@ public class UserService {
         // This is the way a password should be encoded when checking the credentials
         return new String(hashedPassword, StandardCharsets.UTF_8)
                 .replace("\"", ""); //to be able to save in JSON format
+    }
+
+
+    public static User login(String username, String pass) throws BadCredentials {
+        String encoded=encodePassword(username, pass);
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getEmail())){
+                if(Objects.equals(encoded, user.getPassword())){
+                    return user;
+                }else{
+                    throw new BadCredentials();
+                }
+            }
+        }
+        throw new BadCredentials();
     }
 
     private static MessageDigest getMessageDigest() {
