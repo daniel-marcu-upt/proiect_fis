@@ -34,14 +34,17 @@ public class LoginController {
 
         try{
             User user = UserService.login(emailField.getText(), passwordField.getText());
-            if(user.getRole()=="Client"){
+            if(user.getRole().equals("Client")){
                 //schimbam pe ecranul de cautare muncitori
-            }else if(user.getRole()=="Muncitor"){
+                Main.switchScene("dashboard_client.fxml","Dashboard Client");
+            }else if(user.getRole().equals("Muncitor")){
                 //schimbam pe ecranul de dashboard muncitor
             }
         }catch (BadCredentials e){
             loginMessage.setFill(Color.RED);
             loginMessage.setText(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
