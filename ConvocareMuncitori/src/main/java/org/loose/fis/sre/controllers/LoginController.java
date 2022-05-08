@@ -12,6 +12,7 @@ import org.loose.fis.sre.Main;
 import javafx.scene.paint.Color;
 import java.io.IOException;
 
+import org.loose.fis.sre.exceptions.BadCredentials;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.UserService;
 
@@ -31,7 +32,19 @@ public class LoginController {
     @FXML
     public void checkCredentials(){
 
+        try{
+            User user = UserService.login(emailField.getText(), passwordField.getText());
+            if(user.getRole()=="Client"){
+                //schimbam pe ecranul de cautare muncitori
+            }else if(user.getRole()=="Muncitor"){
+                //schimbam pe ecranul de dashboard muncitor
+            }
+        }catch (BadCredentials e){
+            loginMessage.setFill(Color.RED);
+            loginMessage.setText(e.getMessage());
+        }
     }
+
 
     @FXML
     private void gotoRegister() throws IOException {
