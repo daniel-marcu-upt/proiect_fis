@@ -59,9 +59,6 @@ public class InterventiiController {
             });
         }
     }
-    private void gotoDetails() throws IOException{
-        Main.switchScene("detalii_interventie.fxml", "Detalii interventie");
-    }
 
     @FXML
     private void gotoDashboard() throws IOException {
