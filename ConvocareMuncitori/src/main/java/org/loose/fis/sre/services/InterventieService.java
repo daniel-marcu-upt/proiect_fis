@@ -52,9 +52,9 @@ public class InterventieService {
             return -1;
         if(b.getMonth()<a.getMonth())
             return 1;
-        if(a.getDay()<b.getDay())
+        if(a.getDate()<b.getDate())
             return -1;
-        if(b.getDay()<a.getDay())
+        if(b.getDate()<a.getDate())
             return 1;
         return 0;
     }

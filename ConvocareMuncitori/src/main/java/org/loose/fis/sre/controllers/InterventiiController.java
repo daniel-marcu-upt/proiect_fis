@@ -41,7 +41,7 @@ public class InterventiiController {
         } else {
             for (Interventie i : list) {
                 User client = UserService.findUser(i.getClient());
-                String description = client.getDescription() + "  " + i.getData().getDay() + "." + i.getData().getMonth() + "." + (i.getData().getYear() + 1900);
+                String description = client.getDescription() + "  " + i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900);
                 listaInterventii.getItems().addAll(description);
             }
             listaInterventii.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -52,7 +52,7 @@ public class InterventiiController {
                     User client = UserService.findUser(i.getClient());
                     String text = "Client: "+client.getName()+"\n";
                     text += "Adresa: "+client.getDescription()+"\n";
-                    text += "Data: "+i.getData().getDay() + "." + i.getData().getMonth() + "." + (i.getData().getYear() + 1900)+"\n";
+                    text += "Data: "+i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900)+"\n";
                     text += "aici punem ratingul clientului";
                     client_text.setText(text);
                 }

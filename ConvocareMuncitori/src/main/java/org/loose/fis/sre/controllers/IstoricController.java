@@ -31,14 +31,49 @@ public class IstoricController {
     private Text client_text;
 
     private List<Interventie> list;
+    private Interventie selectat;
 
     @FXML
     public void initialize() {
+        list = InterventieService.getIstoric(UserService.get_logged_in().getEmail());
+        if (list.size() == 0) {
+            err.setFill(Color.RED);
+            err.setText("Nu exista interventii!");
+        } else {
+            for (Interventie i : list) {
+                User client = UserService.findUser(i.getClient());
+                String description = client.getDescription() + "  " + i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900);
+                listaIstoric.getItems().addAll(description);
+            }
+            listaIstoric.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            listaIstoric.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    Interventie i = list.get((Integer) newValue);
+                    selectat=i;
+                    User client = UserService.findUser(i.getClient());
+                    String text = "Client: "+client.getName()+"\n";
+                    text += "Adresa: "+client.getDescription()+"\n";
+                    text += "Data: "+i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900)+"\n";
+                    text += "aici punem ratingul clientului";
+                    client_text.setText(text);
+                }
+            });
+        }
     }
-    private void gotoRecenzie() throws IOException{
-        Main.switchScene("recenzie.fxml", "Acordare recenzie");
+    public Interventie getSelectat(){
+        return selectat;
     }
 
+    @FXML
+    private void gotoRecenzie() throws  IOException{
+        if(selectat == null){
+            err.setFill(Color.RED);
+            err.setText("Nu ati selectat o interventie!");
+        }else{
+            Main.switchScene("recenzii.fxml", "Acordare recenzii");
+        }
+    }
     @FXML
     private void gotoDashboard() throws IOException {
         Main.switchScene("dashboard_muncitor.fxml", "Dashboard Muncitor");

@@ -6,6 +6,7 @@ import org.loose.fis.sre.Main;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class DashboardMuncitorController {
     @FXML
@@ -16,7 +17,7 @@ public class DashboardMuncitorController {
     }
     @FXML
     private void gotoInterventii() throws IOException {
-        Main.switchScene("interventii.fxml", "Intervenii");
+        Main.switchScene("interventii.fxml", "Interventii");
     }
     @FXML
     private void gotoIstoric() throws IOException {
