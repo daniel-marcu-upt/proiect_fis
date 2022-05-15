@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<GridPane fx:controller="org.loose.fis.sre.controllers.IstoricController"
+          xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" minHeight="1000" minWidth="3900"
+          vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
+          prefHeight="400.0" prefWidth="600.0">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
+    <Text id="text" text="Istoric interventii" GridPane.columnIndex="0" GridPane.columnSpan="2"
+          GridPane.rowIndex="0"/>
+    <Text fx:id="err" GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
+
+    <ListView fx:id="listaIstoric" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <Text fx:id="client_text" GridPane.columnIndex="1"
+          GridPane.rowIndex="2"/>
+
+<!--    <Label fx:id="label_recenzie" GridPane.columnIndex="0" GridPane.rowIndex="4" />-->
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button onAction="#gotoRecenzie" text="Recenzie"/>
+    </HBox>
+    <Label text="Inapoi la dashboard" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <Button onAction="#gotoDashboard" text="Inapoi"/>
+    </HBox>
+</GridPane>
