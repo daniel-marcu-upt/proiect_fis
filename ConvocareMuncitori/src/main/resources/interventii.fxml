@@ -17,11 +17,16 @@
     </padding>
     <Text id="text" text="Lista interventii" GridPane.columnIndex="0" GridPane.columnSpan="2"
           GridPane.rowIndex="0"/>
+    <Text fx:id="err" GridPane.columnIndex="0"
+          GridPane.rowIndex="1"/>
 
-    <ListView fx:id="listaInterventii"/>
+    <ListView fx:id="listaInterventii" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-    <Label text="Inapoi la dashboard" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+    <Text fx:id="client_text" GridPane.columnIndex="1"
+          GridPane.rowIndex="2"/>
+
+    <Label text="Inapoi la dashboard" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button onAction="#gotoDashboard" text="Inapoi"/>
     </HBox>
 </GridPane>

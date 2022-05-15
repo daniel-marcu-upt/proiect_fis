@@ -79,10 +79,13 @@ public class RegistrationController {
                     emailField.getText(), passwordField.getText(), role.getValue().toString(),
                     nameField.getText(), phoneField.getText(), descriptionField.getText()
             );
-            registrationMessage.setFill(Color.GREEN);
-            registrationMessage.setText("Cont creat cu succes!\nVa puteti autentifica acum.\n");
+            gotoLogin();
+//            registrationMessage.setFill(Color.GREEN);
+//            registrationMessage.setText("Cont creat cu succes!\nVa puteti autentifica acum.\n");
         } catch (UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     @FXML

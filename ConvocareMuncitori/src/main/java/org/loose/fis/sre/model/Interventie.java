@@ -17,6 +17,9 @@ public class Interventie {
         this.muncitor=muncitor;
         this.data=data;
     }
+    public Interventie(){
+
+    }
 
     public Integer getId() {
         return id;

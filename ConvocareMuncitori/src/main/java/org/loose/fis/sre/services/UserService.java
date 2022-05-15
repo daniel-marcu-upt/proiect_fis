@@ -28,6 +28,14 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role, name, phone, description));
     }
 
+    public static User findUser(String email){
+        for (User user : userRepository.find()) {
+            if (Objects.equals(email, user.getEmail()))
+                return user;
+        }
+        return null;
+    }
+
     private static void checkUserDoesNotAlreadyExist(String email) throws UsernameAlreadyExistsException {
         for (User user : userRepository.find()) {
             if (Objects.equals(email, user.getEmail()))

@@ -28,8 +28,8 @@
         <Button onAction="#gotoIstoric" text="Istoric"/>
     </HBox>
 
-    <Label text="Acordare recenzii" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label text="Vizualizare profil" GridPane.columnIndex="0" GridPane.rowIndex="3" />
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#gotoRecenzii" text="Recenzie"/>
+        <Button onAction="#gotoProfil" text="Profil"/>
     </HBox>
 </GridPane>

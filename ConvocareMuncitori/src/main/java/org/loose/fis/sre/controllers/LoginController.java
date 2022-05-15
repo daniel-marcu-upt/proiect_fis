@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import org.loose.fis.sre.exceptions.BadCredentials;
 import org.loose.fis.sre.model.User;
+import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
@@ -27,7 +28,6 @@ public class LoginController {
     private TextField emailField;
     @FXML
     public void initialize() {
-
     }
     @FXML
     public void checkCredentials(){
@@ -35,7 +35,7 @@ public class LoginController {
         try{
             User user = UserService.login(emailField.getText(), passwordField.getText());
             if(user.getRole().equals("Client")){
-
+                Main.switchScene("dashboard_client.fxml", "Dashboard client");
             }else if(user.getRole().equals("Muncitor")){
                 Main.switchScene("dashboard_muncitor.fxml", "Dashboard muncitor");
             }
