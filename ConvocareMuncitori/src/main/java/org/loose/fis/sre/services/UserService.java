@@ -16,18 +16,24 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    private static User logged_in=null;
 
-    public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("registration-example.db").toFile())
-                .openOrCreate("test", "test");
+    public static void init() {
 
-        userRepository = database.getRepository(User.class);
+        userRepository = FileSystemService.getDatabase().getRepository(User.class);
     }
 
     public static void addUser(String username, String password, String role, String name, String phone, String description) throws UsernameAlreadyExistsException {
         checkUserDoesNotAlreadyExist(username);
         userRepository.insert(new User(username, encodePassword(username, password), role, name, phone, description));
+    }
+
+    public static User findUser(String email){
+        for (User user : userRepository.find()) {
+            if (Objects.equals(email, user.getEmail()))
+                return user;
+        }
+        return null;
     }
 
     private static void checkUserDoesNotAlreadyExist(String email) throws UsernameAlreadyExistsException {
@@ -54,6 +60,7 @@ public class UserService {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getEmail())){
                 if(Objects.equals(encoded, user.getPassword())){
+                    logged_in=user;
                     return user;
                 }else{
                     throw new BadCredentials();
@@ -61,6 +68,10 @@ public class UserService {
             }
         }
         throw new BadCredentials();
+    }
+
+    public static User get_logged_in(){
+        return logged_in;
     }
 
     private static MessageDigest getMessageDigest() {
