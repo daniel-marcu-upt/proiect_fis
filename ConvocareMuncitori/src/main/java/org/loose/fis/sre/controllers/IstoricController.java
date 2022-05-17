@@ -12,8 +12,10 @@ import org.loose.fis.sre.Main;
 
 import javafx.scene.paint.Color;
 import org.loose.fis.sre.model.Interventie;
+import org.loose.fis.sre.model.Recenzie;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.InterventieService;
+import org.loose.fis.sre.services.RecenzieService;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
@@ -31,10 +33,11 @@ public class IstoricController {
     private Text client_text;
 
     private List<Interventie> list;
-    private Interventie selectat;
+    private static Interventie selectat;
 
     @FXML
     public void initialize() {
+//        RecenzieService.removeAll();
         list = InterventieService.getIstoric(UserService.get_logged_in().getEmail());
         if (list.size() == 0) {
             err.setFill(Color.RED);
@@ -55,13 +58,13 @@ public class IstoricController {
                     String text = "Client: "+client.getName()+"\n";
                     text += "Adresa: "+client.getDescription()+"\n";
                     text += "Data: "+i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900)+"\n";
-                    text += "aici punem ratingul clientului";
+                    text += "Nota medie: " + RecenzieService.getAverage(client.getEmail());
                     client_text.setText(text);
                 }
             });
         }
     }
-    public Interventie getSelectat(){
+    public static Interventie getSelectat(){
         return selectat;
     }
 
@@ -71,7 +74,13 @@ public class IstoricController {
             err.setFill(Color.RED);
             err.setText("Nu ati selectat o interventie!");
         }else{
-            Main.switchScene("recenzii.fxml", "Acordare recenzii");
+            int r = RecenzieService.getRecenzie(selectat.getId(), selectat.getClient());
+            if(r == 0)
+                Main.switchScene("recenzie.fxml", "Acordare recenzii");
+            else {
+                err.setFill(Color.RED);
+                err.setText("Ati acordat deja recenzia!");
+            }
         }
     }
     @FXML

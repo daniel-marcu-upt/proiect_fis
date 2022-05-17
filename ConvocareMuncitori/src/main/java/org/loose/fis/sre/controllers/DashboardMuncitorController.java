@@ -23,8 +23,4 @@ public class DashboardMuncitorController {
     private void gotoIstoric() throws IOException {
         Main.switchScene("istoric_muncitor.fxml", "Istoric interventii");
     }
-    @FXML
-    private void gotoProfil() throws IOException {
-        Main.switchScene("profil.fxml", "Vizualizare profil");
-    }
 }
