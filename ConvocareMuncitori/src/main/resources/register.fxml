@@ -33,7 +33,7 @@
 
     <Text textAlignment="LEFT" fx:id="registrationMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-        <Button onAction="#handleRegisterAction" text="Register"/>
+        <Button fx:id="register" onAction="#handleRegisterAction" text="Register"/>
     </HBox>
     <Label text="Aveti deja un cont?" GridPane.columnIndex="0" GridPane.rowIndex="8" />
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="8">

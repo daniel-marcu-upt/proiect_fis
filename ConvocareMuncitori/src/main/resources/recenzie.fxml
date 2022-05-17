@@ -15,18 +15,20 @@
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
     </padding>
-    <Text fx:id="title_text"GridPane.columnIndex="0" GridPane.columnSpan="2"
+    <Text fx:id="title_text" GridPane.columnIndex="0" GridPane.columnSpan="2"
           GridPane.rowIndex="0"/>
+    <Text fx:id="err" GridPane.columnIndex="0" GridPane.columnSpan="1"
+          GridPane.rowIndex="1"/>
 
-    <Label text="Adresa email:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="nota" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Label text="Nota:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="nota" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-    <Text textAlignment="LEFT" fx:id="submit" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+    <Text textAlignment="LEFT" fx:id="submit" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
         <Button onAction="#submitRecenzie" text="Submit"/>
     </HBox>
 
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
         <Button onAction="#gotoIstoric" text="Inapoi"/>
     </HBox>
 </GridPane>

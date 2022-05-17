@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import org.loose.fis.sre.model.Interventie;
 import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.InterventieService;
+import org.loose.fis.sre.services.RecenzieService;
 import org.loose.fis.sre.services.UserService;
 
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class InterventiiController {
                     String text = "Client: "+client.getName()+"\n";
                     text += "Adresa: "+client.getDescription()+"\n";
                     text += "Data: "+i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900)+"\n";
-                    text += "aici punem ratingul clientului";
+                    text += "Nota medie: " + RecenzieService.getAverage(client.getEmail());
                     client_text.setText(text);
                 }
             });
