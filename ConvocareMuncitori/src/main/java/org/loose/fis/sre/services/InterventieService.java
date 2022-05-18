@@ -81,6 +81,12 @@ public class InterventieService {
             }
         }
     }
+    public static Integer getInterventiiCount(){
+        int n=0;
+        for(Interventie i:repository.find())
+            n++;
+        return n;
+    }
 
 
 

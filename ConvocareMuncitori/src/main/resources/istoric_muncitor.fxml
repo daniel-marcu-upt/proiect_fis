@@ -27,7 +27,7 @@
 
 <!--    <Label fx:id="label_recenzie" GridPane.columnIndex="0" GridPane.rowIndex="4" />-->
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button onAction="#gotoRecenzie" text="Recenzie"/>
+        <Button fx:id="recenzie" onAction="#gotoRecenzie" text="Recenzie"/>
     </HBox>
     <Label text="Inapoi la dashboard" GridPane.columnIndex="0" GridPane.rowIndex="5" />
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">

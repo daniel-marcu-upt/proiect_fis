@@ -2,11 +2,9 @@ package org.loose.fis.sre.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.loose.fis.sre.Main;
 
@@ -54,7 +52,7 @@ public class InterventiiController {
                     String text = "Client: "+client.getName()+"\n";
                     text += "Adresa: "+client.getDescription()+"\n";
                     text += "Data: "+i.getData().getDate() + "." + (i.getData().getMonth()+1) + "." + (i.getData().getYear() + 1900)+"\n";
-                    text += "Nota medie: " + RecenzieService.getAverage(client.getEmail());
+                    text += "Nota medie: " + RecenzieService.getMedia(client.getEmail());
                     client_text.setText(text);
                 }
             });

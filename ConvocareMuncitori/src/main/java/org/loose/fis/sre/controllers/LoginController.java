@@ -26,6 +26,9 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private TextField emailField;
+
+    public static boolean not_testing=true;
+
     @FXML
     public void initialize() {
     }
@@ -34,10 +37,14 @@ public class LoginController {
 
         try{
             User user = UserService.login(emailField.getText(), passwordField.getText());
-            if(user.getRole().equals("Client")){
-                Main.switchScene("dashboard_client.fxml", "Dashboard client");
-            }else if(user.getRole().equals("Muncitor")){
-                Main.switchScene("dashboard_muncitor.fxml", "Dashboard muncitor");
+            loginMessage.setFill(Color.GREEN);
+            loginMessage.setText("Ok");
+            if(not_testing) {
+                if (user.getRole().equals("Client")) {
+                    Main.switchScene("dashboard_client.fxml", "Dashboard client");
+                } else if (user.getRole().equals("Muncitor")) {
+                    Main.switchScene("dashboard_muncitor.fxml", "Dashboard muncitor");
+                }
             }
         }catch (BadCredentials e){
             loginMessage.setFill(Color.RED);

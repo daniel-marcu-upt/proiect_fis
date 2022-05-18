@@ -39,10 +39,10 @@ public class RecenzieController {
             Integer n = Integer.parseInt(nota.getText());
             RecenzieService.addRecenzie(IstoricController.getSelectat().getId(), n, u.getEmail());
             err.setFill(Color.GREEN);
-            err.setText("Recenzie acordata cu success");
+            err.setText("Recenzie acordata cu success!");
         }catch (NumberFormatException e){
             err.setFill(Color.RED);
-            err.setText("Nu ati introdus o nota valida");
+            err.setText("Nu ati introdus o nota valida!");
         }
     }
 

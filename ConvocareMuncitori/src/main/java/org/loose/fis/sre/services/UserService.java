@@ -43,7 +43,7 @@ public class UserService {
         }
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -85,4 +85,10 @@ public class UserService {
     }
 
 
+    public static Integer getUsersCount() {
+        int n=0;
+        for(User u: userRepository.find())
+            n++;
+        return n;
+    }
 }

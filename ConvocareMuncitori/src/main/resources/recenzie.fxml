@@ -25,7 +25,7 @@
 
     <Text textAlignment="LEFT" fx:id="submit" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#submitRecenzie" text="Submit"/>
+        <Button fx:id="submit_btn" onAction="#submitRecenzie" text="Submit"/>
     </HBox>
 
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
