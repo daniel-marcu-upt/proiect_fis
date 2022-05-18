@@ -4,15 +4,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.loose.fis.sre.controllers.RegistrationController;
-import org.loose.fis.sre.model.User;
 import org.loose.fis.sre.services.FileSystemService;
 import org.loose.fis.sre.services.UserService;
 import org.testfx.api.FxRobot;
@@ -20,12 +17,11 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 import java.nio.file.Paths;
-import java.util.concurrent.TimeUnit;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)
-class RegistrationTest {
+class A_RegistrationTest {
 
     public static final String EMAIL = "muncitor@gmail.com";
     public static final String PASSWORD = "password";
