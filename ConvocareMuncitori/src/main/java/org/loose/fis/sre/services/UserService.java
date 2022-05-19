@@ -16,7 +16,7 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
-    private static User logged_in=null;
+    private static User logged_in = null;
 
     public static void init() {
 
@@ -28,7 +28,7 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role, name, phone, description));
     }
 
-    public static User findUser(String email){
+    public static User findUser(String email) {
         for (User user : userRepository.find()) {
             if (Objects.equals(email, user.getEmail()))
                 return user;
@@ -56,13 +56,13 @@ public class UserService {
 
 
     public static User login(String username, String pass) throws BadCredentials {
-        String encoded=encodePassword(username, pass);
+        String encoded = encodePassword(username, pass);
         for (User user : userRepository.find()) {
-            if (Objects.equals(username, user.getEmail())){
-                if(Objects.equals(encoded, user.getPassword())){
-                    logged_in=user;
+            if (Objects.equals(username, user.getEmail())) {
+                if (Objects.equals(encoded, user.getPassword())) {
+                    logged_in = user;
                     return user;
-                }else{
+                } else {
                     throw new BadCredentials();
                 }
             }
@@ -70,7 +70,7 @@ public class UserService {
         throw new BadCredentials();
     }
 
-    public static User get_logged_in(){
+    public static User get_logged_in() {
         return logged_in;
     }
 
@@ -86,8 +86,8 @@ public class UserService {
 
 
     public static Integer getUsersCount() {
-        int n=0;
-        for(User u: userRepository.find())
+        int n = 0;
+        for (User u : userRepository.find())
             n++;
         return n;
     }

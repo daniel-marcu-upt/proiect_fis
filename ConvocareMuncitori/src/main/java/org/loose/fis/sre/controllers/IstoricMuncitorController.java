@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class IstoricController {
+public class IstoricMuncitorController {
 
     @FXML
     private ListView listaIstoric;

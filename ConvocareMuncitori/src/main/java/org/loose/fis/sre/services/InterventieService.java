@@ -73,6 +73,14 @@ public class InterventieService {
                 list.add(interventie);
         return list;
     }
+    public static List<Interventie> getIstoricClient(String client){
+        List<Interventie> list = new ArrayList<Interventie>();
+        Date now = new Date();
+        for(Interventie interventie: repository.find())
+            if(interventie.getClient().equals(client) && cmp(now, interventie.getData()) > 0)
+                list.add(interventie);
+        return list;
+    }
 
     private static void checkAvailability(String muncitor, Date data) throws DateNotAvailable {
         for (Interventie interventie : repository.find()) {
