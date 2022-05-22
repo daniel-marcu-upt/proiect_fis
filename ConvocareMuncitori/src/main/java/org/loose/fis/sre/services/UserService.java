@@ -9,8 +9,13 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import org.jetbrains.annotations.NotNull;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class UserService {
@@ -91,4 +96,13 @@ public class UserService {
             n++;
         return n;
     }
+    public static List<User> cautaremuncitor(String specializare){
+        List<User> l = new ArrayList<>();
+        for (User u : userRepository.find())
+            if(u.getDescription().contains(specializare) && u.getRole().equals("Muncitor"))
+                l.add(u);
+
+            return l;
+    }
+
 }
