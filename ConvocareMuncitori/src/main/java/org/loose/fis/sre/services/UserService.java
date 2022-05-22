@@ -9,14 +9,19 @@ import org.loose.fis.sre.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import org.jetbrains.annotations.NotNull;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
-    private static User logged_in=null;
+    private static User logged_in = null;
 
     public static void init() {
 
@@ -28,7 +33,7 @@ public class UserService {
         userRepository.insert(new User(username, encodePassword(username, password), role, name, phone, description));
     }
 
-    public static User findUser(String email){
+    public static User findUser(String email) {
         for (User user : userRepository.find()) {
             if (Objects.equals(email, user.getEmail()))
                 return user;
@@ -43,7 +48,7 @@ public class UserService {
         }
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
@@ -56,13 +61,13 @@ public class UserService {
 
 
     public static User login(String username, String pass) throws BadCredentials {
-        String encoded=encodePassword(username, pass);
+        String encoded = encodePassword(username, pass);
         for (User user : userRepository.find()) {
-            if (Objects.equals(username, user.getEmail())){
-                if(Objects.equals(encoded, user.getPassword())){
-                    logged_in=user;
+            if (Objects.equals(username, user.getEmail())) {
+                if (Objects.equals(encoded, user.getPassword())) {
+                    logged_in = user;
                     return user;
-                }else{
+                } else {
                     throw new BadCredentials();
                 }
             }
@@ -70,7 +75,7 @@ public class UserService {
         throw new BadCredentials();
     }
 
-    public static User get_logged_in(){
+    public static User get_logged_in() {
         return logged_in;
     }
 
@@ -84,5 +89,20 @@ public class UserService {
         return md;
     }
 
+
+    public static Integer getUsersCount() {
+        int n = 0;
+        for (User u : userRepository.find())
+            n++;
+        return n;
+    }
+    public static List<User> cautaremuncitor(String specializare){
+        List<User> l = new ArrayList<>();
+        for (User u : userRepository.find())
+            if(u.getDescription().contains(specializare) && u.getRole().equals("Muncitor"))
+                l.add(u);
+
+            return l;
+    }
 
 }

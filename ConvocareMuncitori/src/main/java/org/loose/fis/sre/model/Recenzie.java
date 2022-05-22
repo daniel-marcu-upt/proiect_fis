@@ -23,12 +23,8 @@ public class Recenzie {
     public String getId() {
         return id;
     }
-    public Integer getInterventie() {
-        return interventie;
-    }
-    public Integer getNota() {
-        return nota;
-    }
+    public Integer getInterventie() {return interventie;}
+    public Integer getNota() {return nota;}
     public String getUser() {
         return user;
     }

@@ -26,7 +26,7 @@
 
     <Text textAlignment="LEFT" fx:id="loginMessage" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <Button onAction="#checkCredentials" text="Login"/>
+        <Button fx:id="login_btn" onAction="#checkCredentials" text="Login"/>
     </HBox>
 
     <Label text="Nu aveti cont?" GridPane.columnIndex="0" GridPane.rowIndex="4" />

@@ -16,6 +16,7 @@ import org.loose.fis.sre.services.UserService;
 
 import javax.validation.constraints.Null;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -36,6 +37,8 @@ public class RegistrationController {
     private TextField phoneField;
     @FXML
     private TextField descriptionField;
+
+    public static boolean not_testing=true;
 
     @FXML
     public void initialize() {
@@ -79,9 +82,11 @@ public class RegistrationController {
                     emailField.getText(), passwordField.getText(), role.getValue().toString(),
                     nameField.getText(), phoneField.getText(), descriptionField.getText()
             );
-            gotoLogin();
-//            registrationMessage.setFill(Color.GREEN);
-//            registrationMessage.setText("Cont creat cu succes!\nVa puteti autentifica acum.\n");
+            registrationMessage.setFill(Color.GREEN);
+            registrationMessage.setText("Cont creat cu succes!\nVa puteti autentifica acum.");
+            if(not_testing) {
+                gotoLogin();
+            }
         } catch (UsernameAlreadyExistsException e) {
             registrationMessage.setText(e.getMessage());
         } catch (IOException e) {
