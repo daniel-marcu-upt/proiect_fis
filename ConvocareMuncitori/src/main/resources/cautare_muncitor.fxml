@@ -6,13 +6,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
+<?import javafx.scene.text.Text?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.CautareMuncitorController">
    <children>
       <Label layoutX="67.0" layoutY="25.0" prefHeight="22.0" prefWidth="262.0" text="Introduceti specializarea muncitorului dorit:" />
       <TextField fx:id="tfCautare" layoutX="65.0" layoutY="61.0" prefHeight="26.0" prefWidth="221.0" />
       <Button layoutX="167.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnRezervareClicked" prefHeight="26.0" prefWidth="78.0" text="Rezervare" />
       <Button layoutX="174.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnInapoiClicked" prefHeight="26.0" prefWidth="66.0" text="Inapoi" />
-      <Button layoutX="291.0" layoutY="61.0" mnemonicParsing="false" onAction="#btnCautareClicked" prefHeight="26.0" prefWidth="57.0" text="Cautare" />
+      <Button fx:id="btnCautare" layoutX="291.0" layoutY="61.0" mnemonicParsing="false" onAction="#btnCautareClicked" prefHeight="26.0" prefWidth="57.0" text="Cautare" />
+      <Text fx:id="err" layoutX="265.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="83.20000000000005"/>
       <ListView fx:id="listaCautare" layoutX="67.0" layoutY="106.0" prefHeight="298.0" prefWidth="282.0" />
    </children>
 </AnchorPane>

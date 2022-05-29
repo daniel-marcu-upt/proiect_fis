@@ -34,8 +34,7 @@ public class CautareMuncitorController{
         private List<User> list;
         @FXML
         private ListView listaCautare;
-        @FXML
-        private static User selectat;
+        public static User selectat;
         public static User getSelectat(){
                 return selectat;
         }

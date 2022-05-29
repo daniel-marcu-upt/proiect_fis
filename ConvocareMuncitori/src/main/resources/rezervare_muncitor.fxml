@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.RezervareMuncitorController">
    <children>
-      <Button layoutX="220.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnRezervareMuncitor" prefHeight="43.0" prefWidth="90.0" text="Rezervare" />
+      <Button fx:id="btnRezervare" layoutX="220.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnRezervareMuncitor" prefHeight="43.0" prefWidth="90.0" text="Rezervare" />
       <TextField fx:id="luna" layoutX="219.0" layoutY="50.0" prefHeight="26.0" prefWidth="90.0" />
       <TextField fx:id="zi" layoutX="68.0" layoutY="50.0" prefHeight="26.0" prefWidth="90.0" />
       <TextField fx:id="an" layoutX="352.0" layoutY="50.0" prefHeight="26.0" prefWidth="83.0" />
